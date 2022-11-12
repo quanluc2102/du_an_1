@@ -13,6 +13,10 @@ public class Duan1 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+<<<<<<< HEAD
         System.err.println("Quandeptrai");
+=======
+        System.out.println("he's lo");
+>>>>>>> 08d044eb38ddc0907cde91d97f111bdfc1af6b7b
     }
 }
