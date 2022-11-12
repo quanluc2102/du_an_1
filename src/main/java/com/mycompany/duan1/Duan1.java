@@ -14,5 +14,9 @@ public class Duan1 {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         System.out.println("he's lo");
+        System.out.println("sakdasdk a  a");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
     }
 }
