@@ -17,6 +17,13 @@ public class Duan1 {
         System.err.println("Quandeptrai");
 =======
         System.out.println("he's lo");
+<<<<<<< HEAD
 >>>>>>> 08d044eb38ddc0907cde91d97f111bdfc1af6b7b
+=======
+        System.out.println("sakdasdk a  a");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
+>>>>>>> a2471768d9b6da13d2b1735a873e3bd2b048435d
     }
 }
