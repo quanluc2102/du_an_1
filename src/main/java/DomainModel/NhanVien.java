@@ -8,6 +8,6 @@ package DomainModel;
  *
  * @author quanl
  */
-public class SanPham {
+public class NhanVien {
     
 }
