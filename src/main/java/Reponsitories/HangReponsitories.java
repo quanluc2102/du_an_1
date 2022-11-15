@@ -4,7 +4,8 @@
  */
 package Reponsitories;
 
-import DomainModel.DienThoai;
+import DomainModel.Hang;
+import DomainModel.Hang;
 import Utillities.HibernateConfig;
 import java.util.ArrayList;
 import org.hibernate.Session;
@@ -15,17 +16,17 @@ import org.hibernate.query.Query;
  *
  * @author haha
  */
-public class DienThoaiReponsitories {
+public class HangReponsitories {
 
     Session session = HibernateConfig.getFACTORY().openSession();
 
-    public ArrayList<DienThoai> getList() {
-        Query query = session.createQuery("From DienThoai");// truy vấn trên entity(HQL)
-        ArrayList<DienThoai> list = (ArrayList<DienThoai>) query.getResultList();
+    public ArrayList<Hang> getList() {
+        Query query = session.createQuery("From Hang");// truy vấn trên entity(HQL)
+        ArrayList<Hang> list = (ArrayList<Hang>) query.getResultList();
         return list;
     }
 
-    public Boolean add(DienThoai dt) {
+    public Boolean add(Hang dt) {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
@@ -40,24 +41,12 @@ public class DienThoaiReponsitories {
         return null;
     }
 
-    public Boolean update(DienThoai dt, String id) {
+    public Boolean update(Hang dt, String id) {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            String hql = "UPDATE DienThoai set [ma] =  :ma \n"
+            String hql = "UPDATE Hang set [ma] =  :ma \n"
                     + "      ,[ten] =  :ten \n"
-                    + "      ,[idHang] =  :idHang \n"
-                    + "      ,[idDong] =  :idDong \n"
-                    + "      ,[CPU] =  :CPU \n"
-                    + "      ,[mauSac] =  :mauSac \n"
-                    + "      ,[RAM] =  :RAM \n"
-                    + "      ,[ROM] =  :ROM \n"
-                    + "      ,[SIM] =  :SIM \n"
-                    + "      ,[pin] = :pin \n"
-                    + "      ,[camera] =  :camera \n"
-                    + "      ,[manHinh] =  :manHinh \n"
-                    + "      ,[giaBan] =  :giaBan\n"
-                    + "      ,[moTa] =  :moTa "
                     + "WHERE id = :id";
             Query query = session.createQuery(hql);
             query.setParameter("ten", dt.getTen());
@@ -74,7 +63,7 @@ public class DienThoaiReponsitories {
         Transaction transaction = null;
         Integer check = 0;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            String hql = "DELETE FROM DienThoai "
+            String hql = "DELETE FROM Hang "
                     + "WHERE id = :id";
             Query query = session.createQuery(hql);
             query.setParameter("id", id);
@@ -87,7 +76,7 @@ public class DienThoaiReponsitories {
     }
 
     public static void main(String[] args) {
-        for (DienThoai string : new DienThoaiReponsitories().getList()) {
+        for (Hang string : new HangReponsitories().getList()) {
             System.out.println(string.toString());
         }
     }
