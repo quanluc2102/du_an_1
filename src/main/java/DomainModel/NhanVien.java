@@ -27,35 +27,38 @@ public class NhanVien implements Serializable {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "ma")
+    @Column(name = "ma_nhan_vien")
     private String ma;
 
-    @Column(name = "ten")
+    @Column(name = "ten_nhan_vien")
     private String ten;
 
     @Column(name = "gioiTinh")
     private String gioiTinh;
 
-    @Column(name = "ngaySInh")
+    @Column(name = "ngay_sinh")
     private String ngaySinh;
 
     @Column(name = "sdt")
     private String sdt;
 
-    @Column(name = "diaChi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
     @ManyToOne
-    @JoinColumn(name = "idChucVu", nullable = false)
+    @JoinColumn(name = "id_chuc_vu", nullable = false)
     private ChucVu idchucVu;
-    
-    @Column(name = "matKhau")
+
+    @Column(name = "mat_khau")
     private String matKhau;
+
+    @Column(name = "email")
+    private String email;
 
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String gioiTinh, String ngaySinh, String sdt, String diaChi, ChucVu idchucVu, String matKhau) {
+    public NhanVien(String id, String ma, String ten, String gioiTinh, String ngaySinh, String sdt, String diaChi, ChucVu idchucVu, String matKhau, String email) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
@@ -65,6 +68,15 @@ public class NhanVien implements Serializable {
         this.diaChi = diaChi;
         this.idchucVu = idchucVu;
         this.matKhau = matKhau;
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

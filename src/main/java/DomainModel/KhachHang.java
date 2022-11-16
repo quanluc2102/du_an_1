@@ -5,6 +5,7 @@
 package DomainModel;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,9 +15,7 @@ import javax.persistence.Table;
  *
  * @author quanl
  */
-
-
-    @Entity
+@Entity
 @Table(name = "KhachHang")
 public class KhachHang implements Serializable {
 
@@ -24,31 +23,31 @@ public class KhachHang implements Serializable {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private String id;
 
-    @Column(name = "ma")
-    private String ma;
-
-    @Column(name = "ten")
+    @Column(name = "ten_khach_hang")
     private String ten;
 
-    @Column(name = "gioiTinh")
-    private String gioiTinh;
+    @Column(name = "ngay_sinh")
+    private Date ngaySinh;
 
     @Column(name = "sdt")
     private String sdt;
 
-    @Column(name = "diaChi")
+    @Column(name = "dia_chi")
     private String diaChi;
 
-    public KhachHang(String id, String ma, String ten, String gioiTinh, String sdt, String diaChi) {
-        this.id = id;
-        this.ma = ma;
-        this.ten = ten;
-        this.gioiTinh = gioiTinh;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-    }
+    @Column(name = "email")
+    private String email;
 
     public KhachHang() {
+    }
+
+    public KhachHang(String id, String ten, Date ngaySinh, String sdt, String diaChi, String email) {
+        this.id = id;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.sdt = sdt;
+        this.diaChi = diaChi;
+        this.email = email;
     }
 
     public String getId() {
@@ -59,14 +58,6 @@ public class KhachHang implements Serializable {
         this.id = id;
     }
 
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
     public String getTen() {
         return ten;
     }
@@ -75,12 +66,12 @@ public class KhachHang implements Serializable {
         this.ten = ten;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
+    public Date getNgaySinh() {
+        return ngaySinh;
     }
 
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getSdt() {
@@ -99,10 +90,17 @@ public class KhachHang implements Serializable {
         this.diaChi = diaChi;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "KhachHang{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", gioiTinh=" + gioiTinh + ", sdt=" + sdt + ", diaChi=" + diaChi + '}';
+        return "KhachHang{" + "id=" + id + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", sdt=" + sdt + ", diaChi=" + diaChi + ", email=" + email + '}';
     }
 
 }
-

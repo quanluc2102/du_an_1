@@ -25,10 +25,10 @@ public class ChucVu implements Serializable {
     @Column(name = "id")
     private String id;
 
-    @Column(name = "ma")
+    @Column(name = "ma_chuc_vu")
     private String ma;
 
-    @Column(name = "ten")
+    @Column(name = "ten_chuc_vu")
     private String ten;
 
     @OneToMany(mappedBy = "idchucVu", fetch = FetchType.LAZY)
