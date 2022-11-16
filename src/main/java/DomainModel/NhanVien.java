@@ -44,7 +44,7 @@ public class NhanVien implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_chuc_vu", nullable = false)
-    private ChucVu idchucVu;
+    private ChucVu chucVu;
 
     @Column(name = "mat_khau")
     private String matKhau;
@@ -55,14 +55,14 @@ public class NhanVien implements Serializable {
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String ngaySinh, String sdt, String diaChi, ChucVu idchucVu, String matKhau, String email) {
+    public NhanVien(String id, String ma, String ten, String ngaySinh, String sdt, String diaChi, ChucVu chucVu, String matKhau, String email) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
         this.diaChi = diaChi;
-        this.idchucVu = idchucVu;
+        this.chucVu = chucVu;
         this.matKhau = matKhau;
         this.email = email;
     }
@@ -77,7 +77,7 @@ public class NhanVien implements Serializable {
 
     @Override
     public String toString() {
-        return "NhanVien{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", sdt=" + sdt + ", diaChi=" + diaChi + ", idchucVu=" + idchucVu + ", matKhau=" + matKhau + '}';
+        return "NhanVien{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", sdt=" + sdt + ", diaChi=" + diaChi + ", idchucVu=" + chucVu + ", matKhau=" + matKhau + '}';
     }
 
     public String getId() {
@@ -129,12 +129,12 @@ public class NhanVien implements Serializable {
         this.diaChi = diaChi;
     }
 
-    public ChucVu getIdchucVu() {
-        return idchucVu;
+    public ChucVu getchucVu() {
+        return chucVu;
     }
 
-    public void setIdchucVu(ChucVu idchucVu) {
-        this.idchucVu = idchucVu;
+    public void setchucVu(ChucVu chucVu) {
+        this.chucVu = chucVu;
     }
 
     public String getMatKhau() {
@@ -145,6 +145,6 @@ public class NhanVien implements Serializable {
         this.matKhau = matKhau;
     }
  public Object[] toDataRow(){
-     return new Object[]{id,ma,ten,ngaySinh,sdt,diaChi,idchucVu.getTen(),matKhau};
+     return new Object[]{id,ma,ten,ngaySinh,sdt,diaChi,chucVu.getTen(),matKhau};
  }
 } 

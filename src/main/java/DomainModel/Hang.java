@@ -27,11 +27,67 @@ public class Hang implements Serializable {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private String id;
 
-    @Column(name = "ma")
+    @Column(name = "ma_hang")
     private String ma;
 
-   @Column(name = "ten")
+   @Column(name = "ten_hang")
     private String ten;   
+   
+   @OneToMany(mappedBy = "hang", fetch = FetchType.LAZY)
+    private List<DienThoai> listDienThoais ;
+
+    public Hang(String id, String ma, String ten, List<DienThoai> listDienThoais) {
+        this.id = id;
+        this.ma = ma;
+        this.ten = ten;
+        this.listDienThoais = listDienThoais;
+    }
+
+    public List<DienThoai> getListDienThoais() {
+        return listDienThoais;
+    }
+
+    public void setListDienThoais(List<DienThoai> listDienThoais) {
+        this.listDienThoais = listDienThoais;
+    }
+   
+    
+
+    public Hang() {
+    }
+
+    @Override
+    public String toString() {
+        return "Hang{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + '}';
+    }
+
+    
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+   
+   
 }
 
 

@@ -4,7 +4,7 @@
  */
 package Reponsitories;
 
-import DomainModel.DienThoaiChiTiet;
+import DomainModel.ChiTietDienThoai;
 import Utillities.HibernateConfig;
 import java.util.ArrayList;
 import org.hibernate.Session;
@@ -14,18 +14,18 @@ import org.hibernate.query.Query;
  *
  * @author haha
  */
-public class DienThoaiChiTietReponsitories {
+public class ChiTietDienThoaiReponsitories {
 
     Session session = HibernateConfig.getFACTORY().openSession();
 
-    public ArrayList<DienThoaiChiTiet> getList() {
-        Query query = session.createQuery("From DienThoaiChiTiet");// truy vấn trên entity(HQL)
-        ArrayList<DienThoaiChiTiet> list = (ArrayList<DienThoaiChiTiet>) query.getResultList();
+    public ArrayList<ChiTietDienThoai> getList() {
+        Query query = session.createQuery("From ChiTietDienThoai");// truy vấn trên entity(HQL)
+        ArrayList<ChiTietDienThoai> list = (ArrayList<ChiTietDienThoai>) query.getResultList();
         return list;
     }
 
     public static void main(String[] args) {
-        for (DienThoaiChiTiet string : new DienThoaiChiTietReponsitories().getList()) {
+        for (ChiTietDienThoai string : new ChiTietDienThoaiReponsitories().getList()) {
             System.out.println(string.toString());
         }
     }

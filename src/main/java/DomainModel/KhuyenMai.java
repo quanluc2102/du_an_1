@@ -6,9 +6,12 @@ package DomainModel;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,23 +26,26 @@ public class KhuyenMai implements Serializable {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private String id;
 
-    @Column(name = "ma")
+    @Column(name = "ma_khuyen_mai")
     private String ma;
 
-    @Column(name = "ngayBatDau")
+    @Column(name = "ngay_bat_dau")
     private Date ngayBatDau;
 
-    @Column(name = "ngayKetThuc")
+    @Column(name = "ngay_ket_thuc")
     private Date ngayKetThuc;
 
-    @Column(name = "giaGiam")
+    @Column(name = "gia_giam")
     private double giaGiam;
 
-    @Column(name = "donVi")
+    @Column(name = "don_vi")
     private int donVi;
 
-    @Column(name = "moTa")
+    @Column(name = "mo_ta")
     private String moTa;
+
+    @OneToMany(mappedBy = "khuyenMai", fetch = FetchType.LAZY)
+    private List<HoaDon> listhHoaDons;
 
     public KhuyenMai() {
     }
@@ -115,5 +121,4 @@ public class KhuyenMai implements Serializable {
         return "KhuyenMai{" + "id=" + id + ", ma=" + ma + ", ngayBatDau=" + ngayBatDau + ", ngayKetThuc=" + ngayKetThuc + ", giaGiam=" + giaGiam + ", donVi=" + donVi + ", moTa=" + moTa + '}';
     }
 
-    
 }

@@ -6,9 +6,12 @@ package DomainModel;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,6 +40,10 @@ public class KhachHang implements Serializable {
 
     @Column(name = "email")
     private String email;
+    
+     @OneToMany(mappedBy = "khachHang", fetch = FetchType.LAZY)
+    private List<HoaDon> listhHoaDons;
+
 
     public KhachHang() {
     }

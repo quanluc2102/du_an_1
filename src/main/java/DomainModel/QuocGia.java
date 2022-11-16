@@ -4,10 +4,13 @@ package DomainModel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,39 +22,36 @@ import javax.persistence.Table;
  * @author quanl
  */
 @Entity
-@Table(name = "DienThoai")
-public class DienThoai {
+@Table(name = "QuocGia")
+public class QuocGia implements Serializable {
 
     @Id
-    @Column(name = "id", columnDefinition = "uniqueidentifier")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private String id;
 
-    @Column(name = "ma_dien_thoai")
+    @Column(name = "ma_quoc_gia")
     private String ma;
 
-    @Column(name = "ten_dien_thoai")
+    @Column(name = "ten_quoc_gia")
     private String ten;
 
-    @ManyToOne
-    @JoinColumn(name = "id_hang", nullable = false)
-    private Hang hang;
-    
-     @OneToMany(mappedBy = "dienThoai", fetch = FetchType.LAZY)
-    private List<Dong> listDongs ;
+    @OneToMany(mappedBy = "quocGia", fetch = FetchType.LAZY)
+    private List<QuocGiaDong> listQuocGiaDongs;
 
-    @Override
-    public String toString() {
-        return "DienThoai{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", hang=" + hang + '}';
-    }
-
-    public DienThoai(String id, String ma, String ten, Hang hang) {
+    public QuocGia(String id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.hang = hang;
+        
     }
 
-    public DienThoai() {
+    @Override
+    public String toString() {
+        return "QuocGia{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + '}';
+    }
+
+    public QuocGia() {
     }
 
     public String getId() {
@@ -78,12 +78,5 @@ public class DienThoai {
         this.ten = ten;
     }
 
-    public Hang getHang() {
-        return hang;
-    }
-
-    public void setHang(Hang hang) {
-        this.hang = hang;
-    }
-
+   
 }

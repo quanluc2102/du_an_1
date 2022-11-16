@@ -5,11 +5,14 @@
 package DomainModel;
 
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +28,7 @@ public class HoaDon {
     private String id;
 
     @Column(name = "ma_hoa_don")
-    private Date maHoaDon;
+    private String maHoaDon;
 
     @Column(name = "ngay_tao")
     private Date ngayTao;
@@ -38,7 +41,7 @@ public class HoaDon {
 
     @ManyToOne
     @JoinColumn(name = "id_khach_hang", nullable = false)
-    private KhachHang idkhachHang;
+    private KhachHang khachHang;
 
     @ManyToOne
     @JoinColumn(name = "id_nhan_vien", nullable = false)
@@ -47,19 +50,27 @@ public class HoaDon {
     @ManyToOne
     @JoinColumn(name = "id_khuyen_mai", nullable = false)
     private KhuyenMai khuyenMai;
+    
+    @OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
+    private List<HoaDonChiTiet> listHoaDonChiTiets;
 
     public HoaDon() {
     }
 
-    public HoaDon(String id, Date maHoaDon, Date ngayTao, String moTa, int trangThai, KhachHang idkhachHang, NhanVien nhanVien, KhuyenMai khuyenMai) {
+    public HoaDon(String id, String maHoaDon, Date ngayTao, String moTa, int trangThai, KhachHang khachHang, NhanVien nhanVien, KhuyenMai khuyenMai) {
         this.id = id;
         this.maHoaDon = maHoaDon;
         this.ngayTao = ngayTao;
         this.moTa = moTa;
         this.trangThai = trangThai;
-        this.idkhachHang = idkhachHang;
+        this.khachHang = khachHang;
         this.nhanVien = nhanVien;
         this.khuyenMai = khuyenMai;
+    }
+
+    @Override
+    public String toString() {
+        return "HoaDon{" + "id=" + id + ", maHoaDon=" + maHoaDon + ", ngayTao=" + ngayTao + ", moTa=" + moTa + ", trangThai=" + trangThai + ", khachHang=" + khachHang + ", nhanVien=" + nhanVien + ", khuyenMai=" + khuyenMai + '}';
     }
 
     public String getId() {
@@ -70,11 +81,11 @@ public class HoaDon {
         this.id = id;
     }
 
-    public Date getMaHoaDon() {
+    public String getMaHoaDon() {
         return maHoaDon;
     }
 
-    public void setMaHoaDon(Date maHoaDon) {
+    public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
 
@@ -102,12 +113,12 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-    public KhachHang getIdkhachHang() {
-        return idkhachHang;
+    public KhachHang getKhachHang() {
+        return khachHang;
     }
 
-    public void setIdkhachHang(KhachHang idkhachHang) {
-        this.idkhachHang = idkhachHang;
+    public void setKhachHang(KhachHang khachHang) {
+        this.khachHang = khachHang;
     }
 
     public NhanVien getNhanVien() {
