@@ -41,23 +41,23 @@ public class HangReponsitories {
         return null;
     }
 
-    public Boolean update(Hang dt, String id) {
-        Transaction transaction = null;
-        Integer check = 0;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            String hql = "UPDATE Hang set [ma] =  :ma \n"
-                    + "      ,[ten] =  :ten \n"
-                    + "WHERE id = :id";
-            Query query = session.createQuery(hql);
-            query.setParameter("ten", dt.getTen());
-            query.setParameter("id", id);
-            check = query.executeUpdate();
-            return check > 0;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
+//    public Boolean update(Hang dt, String id) {
+//        Transaction transaction = null;
+//        Integer check = 0;
+//        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+//            String hql = "UPDATE Hang set [ma] =  :ma \n"
+//                    + "      ,[ten] =  :ten \n"
+//                    + "WHERE id = :id";
+//            Query query = session.createQuery(hql);
+//            query.setParameter("ten", dt.getTen());
+//            query.setParameter("id", id);
+//            check = query.executeUpdate();
+//            return check > 0;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return null;
+//    }
 
     public Boolean delete(String id) {
         Transaction transaction = null;

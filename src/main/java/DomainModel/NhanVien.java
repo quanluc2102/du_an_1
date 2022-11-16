@@ -33,9 +33,6 @@ public class NhanVien implements Serializable {
     @Column(name = "ten_nhan_vien")
     private String ten;
 
-    @Column(name = "gioiTinh")
-    private String gioiTinh;
-
     @Column(name = "ngay_sinh")
     private String ngaySinh;
 
@@ -58,11 +55,10 @@ public class NhanVien implements Serializable {
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String gioiTinh, String ngaySinh, String sdt, String diaChi, ChucVu idchucVu, String matKhau, String email) {
+    public NhanVien(String id, String ma, String ten, String ngaySinh, String sdt, String diaChi, ChucVu idchucVu, String matKhau, String email) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
         this.diaChi = diaChi;
@@ -81,7 +77,7 @@ public class NhanVien implements Serializable {
 
     @Override
     public String toString() {
-        return "NhanVien{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", sdt=" + sdt + ", diaChi=" + diaChi + ", idchucVu=" + idchucVu + ", matKhau=" + matKhau + '}';
+        return "NhanVien{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", ngaySinh=" + ngaySinh + ", sdt=" + sdt + ", diaChi=" + diaChi + ", idchucVu=" + idchucVu + ", matKhau=" + matKhau + '}';
     }
 
     public String getId() {
@@ -108,14 +104,7 @@ public class NhanVien implements Serializable {
         this.ten = ten;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
+    
     public String getNgaySinh() {
         return ngaySinh;
     }
@@ -155,5 +144,7 @@ public class NhanVien implements Serializable {
     public void setMatKhau(String matKhau) {
         this.matKhau = matKhau;
     }
-
-}
+ public Object[] toDataRow(){
+     return new Object[]{id,ma,ten,ngaySinh,sdt,diaChi,idchucVu.getTen(),matKhau};
+ }
+} 

@@ -4,6 +4,10 @@
  */
 package view;
 
+import DomainModel.NhanVien;
+import Service.QuanLyNhanVienService;
+import Service.impl.QuanLyNhanVien;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,12 +20,16 @@ public class NhanVienView extends javax.swing.JFrame {
      * Creates new form NhanVienView
      */
     private DefaultTableModel dtm = new DefaultTableModel();
+    private ArrayList<NhanVien> list = new ArrayList<>();
+    private QuanLyNhanVienService impl = new QuanLyNhanVien();
     
     public NhanVienView() {
         initComponents();
         tbNV.setModel(dtm);
-        String [] header = {"ID","Mã NV","Tên NV","Giới Tính","Ngày Sinh","SDT","Địa chỉ","Chức vụ","Mật khẩu"};
+        String [] header = {"ID","Mã NV","Tên NV","Ngày Sinh","SDT","Địa chỉ","Chức vụ","Mật khẩu"};
         dtm.setColumnIdentifiers(header);
+        list = impl.getAllNV();
+        impl.showData(list, dtm);
         
     }
 
