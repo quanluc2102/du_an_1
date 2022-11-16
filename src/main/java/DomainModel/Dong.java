@@ -1,8 +1,10 @@
+package DomainModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DomainModel;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,40 +35,7 @@ public class Dong implements Serializable {
 
     @Column(name = "ten")
     private String ten;
-
-    @OneToMany(mappedBy = "dong", fetch = FetchType.LAZY)
-    private List<DienThoai> listDienThoai;
-
-    @Override
-    public String toString() {
-        return "Dong{"+ ", ma=" + ma + ", ten=" + ten + '}';
-    }
-
-    public Dong() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
+    
+     @Column(name = "id_dien_thoai")
+    private String idDienThoai;
 }
