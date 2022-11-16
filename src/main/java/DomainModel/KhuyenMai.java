@@ -39,7 +39,7 @@ public class KhuyenMai implements Serializable {
     private double giaGiam;
 
     @Column(name = "don_vi")
-    private int donVi;
+    private boolean donVi;
 
     @Column(name = "mo_ta")
     private String moTa;

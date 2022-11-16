@@ -34,13 +34,13 @@ public class BaoHanh implements Serializable {
     private String thoiGian;
 
     @Column(name = "don_vi")
-    private String donVi;
+    private boolean donVi;
 
 
     @OneToMany(mappedBy = "baoHanh", fetch = FetchType.LAZY)
     private List<HoaDonChiTiet> listHoaDonChiTiets;
 
-    public BaoHanh(String id, String thoiGian, String donVi) {
+    public BaoHanh(String id, String thoiGian, boolean donVi) {
         this.id = id;
         this.thoiGian = thoiGian;
         this.donVi = donVi;
@@ -48,12 +48,6 @@ public class BaoHanh implements Serializable {
 
     public BaoHanh() {
     }
-
-    @Override
-    public String toString() {
-        return "BaoHanh{" + "id=" + id + ", thoiGian=" + thoiGian + ", donVi=" + donVi + '}';
-    }
-    
 
     public String getId() {
         return id;
@@ -71,11 +65,11 @@ public class BaoHanh implements Serializable {
         this.thoiGian = thoiGian;
     }
 
-    public String getDonVi() {
+    public boolean isDonVi() {
         return donVi;
     }
 
-    public void setDonVi(String donVi) {
+    public void setDonVi(boolean donVi) {
         this.donVi = donVi;
     }
 
@@ -87,5 +81,6 @@ public class BaoHanh implements Serializable {
         this.listHoaDonChiTiets = listHoaDonChiTiets;
     }
 
+   
     
 }
